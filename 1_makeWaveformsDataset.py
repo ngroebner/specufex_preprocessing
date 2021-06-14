@@ -15,14 +15,10 @@ import sys
 import obspy
 import os
 import pandas as pd
+import pyaml
 
 sys.path.append('functions/')
-from setParams import setParams
 from generators import gen_wf_from_folder
-
-import tables
-tables.file._open_files.close_all()
-
 
 
 #%% load project variables: names and paths
@@ -91,13 +87,13 @@ lenData = len(wf_test[0].data)
 gen_wf = gen_wf_from_folder(wf_filelist,key,lenData,channel_ID)
 
 
-## clear old H5 if it exists, or else error will appear 
+## clear old H5 if it exists, or else error will appear
 if os.path.exists(dataH5_path):
     os.remove(dataH5_path)
-    
+
 #%% add catalog and waveforms to H5
 
-    
+
 evID_keep = [] #list of wfs to keep
 
 with h5py.File(dataH5_path,'a') as h5file:
