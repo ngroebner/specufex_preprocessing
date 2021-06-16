@@ -28,10 +28,10 @@ config_filename = sys.argv[1]
 with open(config_filename, "r") as yamlfile:
     config = yaml.load(yamlfile, Loader=yaml.FullLoader)
 
-pathProj, pathCat, pathWF, network, station, channel, channel_ID, filetype, cat_columns = setParams(key)
-pathProj = config['waveforms']['pathProj']
-pathCat = pathProj + config['waveforms']['pathCat']
-pathWF = pathProj + config['waveforms']['pathWF']
+#pathProj, pathCat, pathWF, network, station, channel, channel_ID, filetype, cat_columns = setParams(key)
+pathProj = config['pathProj']
+pathCat = pathProj + config['pathCat']
+pathWF = pathProj + config['pathWF']
 
 # should probably use the path building functions in case
 # a user does or doens't add a trailing slash to the
@@ -51,7 +51,7 @@ if not os.path.isdir(pathProj + '/H5files/'):
 cat = pd.read_csv(pathCat, header=None,delim_whitespace=True)
 
 
-cat.columns = config['waveforms']['cat_columns']
+cat.columns = config['cat_columns']
 
 #for plotting in later scripts
 try:
