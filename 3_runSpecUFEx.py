@@ -13,8 +13,6 @@ import sys
 import pandas as pd
 from matplotlib import pyplot as plt
 
-sys.path.append('functions/')
-from setParams import setParams
 # from generators import gen_sgram_QC
 
 import tables
@@ -25,11 +23,6 @@ from specufex import BayesianNonparametricNMF, BayesianHMM
 #%% load project variables: names and paths
 
 key = sys.argv[1]
-
-# key = 'Parkfield_Repeaters'
-
-
-
 
 #%%
 ### do not change these ###

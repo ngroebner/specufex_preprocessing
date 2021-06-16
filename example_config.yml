@@ -8,7 +8,7 @@ pathWF : data_raw/BAV.waves/
 network : NC
 station : BAV
 channel : EHZ
-channel_ID : 0 # the index number for an obspy stream object
+channel_ID : EHZ # the index number for an obspy stream object
 filetype : .mseed
 cat_columns :
     - event_ID
