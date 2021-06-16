@@ -15,7 +15,7 @@ import sys
 import obspy
 import os
 import pandas as pd
-import pyaml
+import yaml
 
 sys.path.append('functions/')
 from generators import gen_wf_from_folder
@@ -24,23 +24,19 @@ from generators import gen_wf_from_folder
 #%% load project variables: names and paths
 
 
-key = sys.argv[1]
-print(key)
-print(key)
-
-print(key)
-
-print(key)
-
-#example
-# key = 'Parkfield_Repeaters'
-
-# key='1'
+config_filename = sys.argv[1]
+with open(config_filename, "r") as yamlfile:
+    config = yaml.load(yamlfile, Loader=yaml.FullLoader)
 
 pathProj, pathCat, pathWF, network, station, channel, channel_ID, filetype, cat_columns = setParams(key)
+pathProj = config['waveforms']['pathProj']
+pathCat = pathProj + config['waveforms']['pathCat']
+pathWF = pathProj + config['waveforms']['pathWF']
 
-
-dataH5_name = f'data_{key}.hdf5'
+# should probably use the path building functions in case
+# a user does or doens't add a trailing slash to the
+# paths in the config file
+dataH5_name = f'data_{config["name"]}.hdf5'
 
 dataH5_path = pathProj + '/H5files/' + dataH5_name
 
@@ -55,7 +51,7 @@ if not os.path.isdir(pathProj + '/H5files/'):
 cat = pd.read_csv(pathCat, header=None,delim_whitespace=True)
 
 
-cat.columns = cat_columns
+cat.columns = config['waveforms']['cat_columns']
 
 #for plotting in later scripts
 try:

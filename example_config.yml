@@ -1,29 +1,31 @@
 #Parkfield_Repeaters
-waveforms:
-  pathProj : /Users/theresasawi/Documents/12_Projects/Parkfield_Repeaters/
-  pathCat : data_raw/catall.txt
-  pathWF : data_raw/BAV.waves/
-  network : NC
-  station : BAV
-  channel : EHZ
-  channel_ID : 0 # the index number for an obspy stream object
-  filetype : .mseed
-  cat_columns :
-      - event_ID
-      - lat
-      - long
-      - depthOrMag
-      - year
-      - month
-      - day
-      - hour
-      - minute
-      - second
-      - magnitudeOrDepth
+name : Parkfield_repeaters
 
-spectrograms:
-  fmin : 8
-  fmax : 40
-  winLen_Sec : .2#seconds
-  fracOverlap : 0.25
-  nfft : 1024 #padding
+# catalog and waveform data
+pathProj : /Users/theresasawi/Documents/12_Projects/Parkfield_Repeaters/
+pathCat : data_raw/catall.txt
+pathWF : data_raw/BAV.waves/
+network : NC
+station : BAV
+channel : EHZ
+channel_ID : 0 # the index number for an obspy stream object
+filetype : .mseed
+cat_columns :
+    - event_ID
+    - lat
+    - long
+    - depthOrMag
+    - year
+    - month
+    - day
+    - hour
+    - minute
+    - second
+    - magnitudeOrDepth
+
+# spectrogram data
+fmin : 8
+fmax : 40
+winLen_Sec : .2#seconds
+fracOverlap : 0.25
+nfft : 1024 #padding
