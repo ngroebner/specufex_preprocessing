@@ -28,7 +28,7 @@ import scipy.signal
 #%%
 
 
-def gen_wf_from_folder(wf_filelist,lenData,channel_ID):
+def gen_wf_from_folder_Steinmann(wf_filelist,lenData,channel_ID):
     """
     Note
     ----------
